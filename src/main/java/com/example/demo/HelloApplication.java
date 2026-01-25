@@ -51,15 +51,16 @@ public class HelloApplication extends Application {
         player = new Circle(screenSizeX/2,playerPosition,circleRadius, Color.ORCHID);
         root.getChildren().add(player);
         Scene scene = new Scene(pane, screenSizeX,screenSizeY);
-        Image backgroundImage = new Image("C://Users//marwa//OneDrive//Desktop//one.jpg");
-        ImageView imageView1 = new ImageView(backgroundImage);
-        imageView1.setPreserveRatio(true);
-        imageView1.setImage(backgroundImage);
-        imageView1.setX(600);
-        imageView1.setY(800);
-        BackgroundImage myBI= new BackgroundImage(new Image("C://Users//marwa//OneDrive//Desktop//one.jpg",600,800,false,true),
-                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
-                BackgroundSize.DEFAULT);
+        Image backgroundImage = new Image( getClass().getResource("/images/background.jpg").toExternalForm());
+        BackgroundImage myBI = new BackgroundImage(
+                backgroundImage,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(screenSizeX, screenSizeY, false, false, false, false)
+        );
+
+        pane.setBackground(new Background(myBI));
 
         Background background = new Background(myBI);
         pane.setBackground(background);
